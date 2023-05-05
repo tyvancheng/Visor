@@ -12,8 +12,8 @@ https://wireframe.cc/Kp1cGF
 timeframe 
 - this weekend // api connectivity
 
-- mondya - front page
+- monday - front page
 
--tuesday - functionality
+- tuesday - functionality
 
--wednesday - clean up
+- wednesday - clean up
