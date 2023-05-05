@@ -7,73 +7,26 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (function() { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ (function() {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scripts_example__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scripts/example */ \"./src/scripts/example.js\");\n\ndocument.addEventListener('DOMContentLoaded', () => {\n    console.log(\"hello\");\n\n    const main = document.getElementById('main');\n    new _scripts_example__WEBPACK_IMPORTED_MODULE_0__[\"default\"](main)\n})\n\n//# sourceURL=webpack://proj/./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/scripts/example.js":
-/*!********************************!*\
-  !*** ./src/scripts/example.js ***!
-  \********************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-eval("__webpack_require__.r(__webpack_exports__);\nclass Example {\n    constructor(htmlElement) {\n        this.htmlElement = htmlElement\n        this.htmlElement.innerHTML = \"<h1>It's Alive</h1>\"\n        this.handleClick = this.handleClick.bind(this)\n        this.htmlElement.addEventListener('click',this.handleClick)\n        \n    }\n\n    handleClick() {\n        this.htmlElement.children[0].innerText = \"ouch\"\n    }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Example);\n\n//# sourceURL=webpack://proj/./src/scripts/example.js?");
+eval("console.log(\"bye\")\ndocument.addEventListener('DOMContentLoaded', () => {\n\n    const searchInput = document.getElementById('stock-input');\n    const stockList = document.getElementById('stock-list');\n  \n    const fetchStocks = async searchText => {\n      const res = await fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=tesco&apikey=EMX9C3VLWA4KWGK1?q=${searchText}`);\n      const stocks = await res.json();\n      return stocks;\n    }\n  \n    const showStocks = async searchText => {\n      const stocks = await fetchStocks(searchText);\n  \n      // Clear previous search results\n      while (stockList.firstChild) {\n        stockList.removeChild(stockList.firstChild);\n      }\n  \n      stocks.forEach(stock => {\n        const li = document.createElement('li');\n        li.innerText = stock.symbol;\n        stockList.appendChild(li);\n      });\n    }\n  \n    searchInput.addEventListener('input', () => {\n      const searchText = searchInput.value.trim();\n      if (searchText.length > 0) {\n        showStocks(searchText);\n      } else {\n        // Clear search results if search input is empty\n        while (stockList.firstChild) {\n          stockList.removeChild(stockList.firstChild);\n        }\n      }\n    });\n  \n  });\n  \n  \n\n//# sourceURL=webpack://proj/./src/index.js?");
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	}();
-/******/ 	
-/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./src/index.js"]();
 /******/ 	
 /******/ })()
 ;
