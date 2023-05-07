@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .filter(match => match['4. region'] === 'United States')
                 // .map(match => match['1. symbol']);
                     // name: match['2. name']
-                .map(match => ['symbol', 'name'].map(property => match[property]));
+                .map(match => `${match['1. symbol']}, ${match['2. name']}`)
                 // fix this ^^ see what it console.logs
                     
     
