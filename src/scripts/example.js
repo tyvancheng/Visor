@@ -1,4 +1,4 @@
-class Example {
+class Data {
     constructor(htmlElement) {
         this.htmlElement = htmlElement
         this.htmlElement.innerHTML = "<h1>It's Alive</h1>"
@@ -12,7 +12,7 @@ class Example {
     }
 }
 
-export default Example;
+export default Data;
 
 
   
