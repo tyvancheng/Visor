@@ -1,0 +1,43 @@
+body {
+    /* background-color: rgb(255, 229, 180); */
+    margin: 0;
+    padding: 0;
+    background-color: #644bff;
+    background-size: 50% auto;
+
+    /* height: 100%; */
+ 
+}
+.wrapper {
+    max-width: 450px;
+    margin: 150px auto;
+}
+
+.stock-search-bar {
+    position: relative;
+    background-color: white;
+    width: 100%;
+    border-radius: 5px;
+}
+#stock-input {
+    /* display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: rgb(55, 48, 48);
+    background-color: rgb(26, 26, 170);
+    margin-top: 30px;
+    padding: 5px;
+    padding-inline-start: 50px;
+    font-size: 30px;
+    color: white; */
+    height: 55px; 
+    width: 100%;
+    border-radius: 5px;
+    padding: 0 60px 0 20px;
+    font-size: 18px;
+
+} 
