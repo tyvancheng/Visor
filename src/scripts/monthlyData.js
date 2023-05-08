@@ -1,5 +1,3 @@
-// Import Chart.js library
-// import Chart from 'chart.js/auto';
 
 export default class MonthlyData {
     constructor(symbol) {
@@ -19,17 +17,8 @@ fetchStockData = async (symbol) => {
     const timeSeriesData = data['Monthly Time Series'];
     const timestamps = Object.keys(timeSeriesData).slice(0, 12); // Get the first 12 timestamps (past year)
     const stockPrices = timestamps.map((timestamp) => parseFloat(timeSeriesData[timestamp]['4. close']));
-    // console.log(timestamps,stockPrices)
 
-    const stockData = {}
-
-    for (let i = 0; i < timestamps.length; i++) {
-        stockData[timestamps[i]] = stockPrices[i];
-        // console.log(i)
-      }
-    
-    return stockData;
-    // console.log(stockData)
+    return {timestamps,stockPrices};
 
   } catch (error) {
     console.log('Error:', error);
@@ -40,9 +29,12 @@ fetchStockData = async (symbol) => {
 // Plot stock data on a graph
 plotStockGraph = async (symbol) => {
   const stockData = await this.fetchStockData(symbol);
-   
+//    console.log(stockData)
   if (stockData) {
     const ctx = document.getElementById('stock-chart').getContext('2d');
+    
+    // if (canvas.chart) {
+    //     canvas.chart.destroy();
 
     new Chart(ctx, {
       type: 'line',
@@ -52,8 +44,8 @@ plotStockGraph = async (symbol) => {
           {
             label: `${symbol} Stock Price`,
             data: stockData.stockPrices,
-            borderColor: 'blue',
-            backgroundColor: 'transparent',
+            borderColor: 'black',
+            backgroundColor: 'white',
           },
         ],
       },
@@ -66,6 +58,16 @@ plotStockGraph = async (symbol) => {
               display: true,
               text: 'Timestamp',
             },
+            // type: 'time',
+            // time: {
+            //   displayFormats: {
+            //     day: 'MM-DD',
+            //   },
+            // },
+            // title: {
+            //   display: true,
+            //   text: 'Timestamp',
+            // },
           },
           y: {
             display: true,
