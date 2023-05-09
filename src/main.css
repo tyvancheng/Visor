@@ -1,6 +1,8 @@
-header {
-    max-height: 50px;
-    background-color: antiquewhite;
+.header {
+    height: 100px;
+    width: auto;
+    background-color: rgb(249, 193, 119);
+    z-index: 2;
 }
 body {
     /* background-color: rgb(255, 229, 180); */
@@ -8,6 +10,7 @@ body {
     padding: 0;
     background-color: #644bff;
     background-size: 50% auto;
+    /* z-index: 1; */
 
     /* height: 100%; */
  
@@ -22,6 +25,7 @@ body {
     background-color: white;
     width: 100%;
     border-radius: 20px;
+    z-index: 1;
 }
 #stock-input {
     /* display: flex;
@@ -49,6 +53,7 @@ body {
 .graph-container {
     width: 50%;
     margin-left: auto;
+    z-index: 3;
 }
 
 #graph {

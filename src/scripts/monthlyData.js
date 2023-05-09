@@ -43,14 +43,10 @@ parseGraphData = (timeSeriesData) => {
 
 // Plot stock data on a graph
 plotStockGraph = async (symbol,timestamps,stockPrices) => {
-//   const stockData = await this.fetchStockData(this.symbol);
-//   if (stockData) {
-   console.log(timestamps)
-   console.log(3)
+
     const canvas = document.getElementById('stock-chart')
     const ctx = canvas.getContext('2d');
 
-    
     if (canvas.chart) {
         canvas.chart.destroy();
         delete canvas.chart; // Remove the chart property
@@ -97,8 +93,6 @@ fetchAndPlotStockGraph = async (symbol = "aapl") => {
     if (!this.stockData) {
       // Fetch stock data if not already fetched
       await this.fetchStockData(symbol);
-      console.log(4)
-      console.log(5)
       this.firstSearch = false
     }
 

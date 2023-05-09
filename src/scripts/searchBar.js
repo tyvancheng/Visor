@@ -76,10 +76,13 @@ export default class SearchBar {
             
             const eventTicker = event.target.innerText.split(", ")[0]
             const graphContainer = document.getElementById("graph")
+            const timeFrameButton = document.getElementById("timeFrameButton")
 
             let graph = new MonthlyData(eventTicker,true);
             graph.fetchAndPlotStockGraph(eventTicker);
             graphContainer.style.display = 'block'
+            timeFrameButton.style.display = 'block'
+
             
             this.searchInput.value = "";
             while (this.stockList.firstChild) {

@@ -22,6 +22,8 @@ FIXES
     - change dates
     - toggle switch 
     - beta calculator
+        -find suitable api
+        
     - news api
 
 
