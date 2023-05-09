@@ -6,6 +6,7 @@ export default class SearchBar {
         this.stockList = document.getElementById('stock-list');
         this.inputListener()
         this.handleStockOptionsClick()
+        this.handleTimeFrameClick()
     }
     // const stockOptions = dropdownMenu.getElementsByTagName('list');
 
@@ -57,7 +58,9 @@ export default class SearchBar {
     
     inputListener = () => {
         this.searchInput.addEventListener('input', () => {
+            
             const searchText = this.searchInput.value.trim();
+            
             if (searchText.length > 0) {
                 this.showStocks(searchText);
             } else {
@@ -71,16 +74,22 @@ export default class SearchBar {
     
     handleStockOptionsClick = () => {
         this.stockList.addEventListener('click', (event) => {
+            
             const eventTicker = event.target.innerText.split(", ")[0]
             const graphContainer = document.getElementById("graph")
 
-            let graph = new MonthlyData(eventTicker);
-            graph.plotStockGraph(eventTicker);
+            let graph = new MonthlyData(eventTicker,true);
+            // graph.plotStockGraph(eventTicker);
             graphContainer.style.display = 'block'
+            
             this.searchInput.value = "";
             while (this.stockList.firstChild) {
                 this.stockList.removeChild(this.stockList.firstChild);
             }
         });
+    }
+
+    handleTimeFrameClick = () => {
+
     }
 };

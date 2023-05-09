@@ -42,6 +42,11 @@ body {
 
 } 
 
+.graph-container {
+    width: 50%;
+    margin-left: auto;
+}
+
 #graph {
     background-color: white;
 }

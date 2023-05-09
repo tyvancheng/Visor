@@ -17,3 +17,9 @@ timeframe
 - tuesday - functionality
 
 - wednesday - clean up
+
+FIXES
+    - change dates
+
+
+nasdaq api key : 5bRxHLcdnPmabEjaUnpb
