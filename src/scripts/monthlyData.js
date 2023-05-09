@@ -29,14 +29,19 @@ fetchStockData = async (symbol) => {
 // Plot stock data on a graph
 plotStockGraph = async (symbol) => {
   const stockData = await this.fetchStockData(symbol);
-//    console.log(stockData)
-  if (stockData) {
-    const ctx = document.getElementById('stock-chart').getContext('2d');
-    
-    // if (canvas.chart) {
-    //     canvas.chart.destroy();
 
-    new Chart(ctx, {
+  if (stockData) {
+   
+    const canvas = document.getElementById('stock-chart')
+    const ctx = canvas.getContext('2d');
+
+    
+    if (canvas.chart) {
+        canvas.chart.destroy();
+        delete canvas.chart; // Remove the chart property
+      }
+
+    const chart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: stockData.timestamps,
@@ -58,16 +63,6 @@ plotStockGraph = async (symbol) => {
               display: true,
               text: 'Timestamp',
             },
-            // type: 'time',
-            // time: {
-            //   displayFormats: {
-            //     day: 'MM-DD',
-            //   },
-            // },
-            // title: {
-            //   display: true,
-            //   text: 'Timestamp',
-            // },
           },
           y: {
             display: true,
@@ -79,6 +74,7 @@ plotStockGraph = async (symbol) => {
         },
       },
     });
+    canvas.chart = chart;
   }
 };
 

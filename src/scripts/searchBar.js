@@ -5,7 +5,7 @@ export default class SearchBar {
         this.searchInput = document.getElementById('stock-input');
         this.stockList = document.getElementById('stock-list');
         this.inputListener()
-        this.stockListOptionsListener()
+        this.handleStockOptionsClick()
     }
     // const stockOptions = dropdownMenu.getElementsByTagName('list');
 
@@ -69,13 +69,18 @@ export default class SearchBar {
         });
     }
     
-    stockListOptionsListener = () => {
+    handleStockOptionsClick = () => {
         this.stockList.addEventListener('click', (event) => {
             const eventTicker = event.target.innerText.split(", ")[0]
-            // console.log(eventTicker);
+            const graphContainer = document.getElementById("graph")
+
             let graph = new MonthlyData(eventTicker);
             graph.plotStockGraph(eventTicker);
-
+            graphContainer.style.display = 'block'
+            this.searchInput.value = "";
+            while (this.stockList.firstChild) {
+                this.stockList.removeChild(this.stockList.firstChild);
+            }
         });
     }
 };
