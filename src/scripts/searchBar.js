@@ -6,7 +6,6 @@ export default class SearchBar {
         this.stockList = document.getElementById('stock-list');
         this.inputListener()
         this.handleStockOptionsClick()
-        this.handleTimeFrameClick()
     }
     // const stockOptions = dropdownMenu.getElementsByTagName('list');
 
@@ -79,17 +78,23 @@ export default class SearchBar {
             const graphContainer = document.getElementById("graph")
 
             let graph = new MonthlyData(eventTicker,true);
-            // graph.plotStockGraph(eventTicker);
+            graph.fetchAndPlotStockGraph(eventTicker);
             graphContainer.style.display = 'block'
             
             this.searchInput.value = "";
             while (this.stockList.firstChild) {
                 this.stockList.removeChild(this.stockList.firstChild);
             }
+
+            this.handleTimeFrameClick(graph)
         });
     }
 
-    handleTimeFrameClick = () => {
-
+    handleTimeFrameClick = (graph) => {
+        const button = document.getElementById("timeFrameButton")
+        button.addEventListener('click', () => {
+            graph.graphTheYear = !graph.graphTheYear
+            graph.fetchAndPlotStockGraph()
+        })
     }
 };

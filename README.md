@@ -20,6 +20,9 @@ timeframe
 
 FIXES
     - change dates
+    - toggle switch 
+    - beta calculator
+    - news api
 
 
 nasdaq api key : 5bRxHLcdnPmabEjaUnpb

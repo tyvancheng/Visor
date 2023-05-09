@@ -1,9 +1,11 @@
 
 export default class MonthlyData {
-    constructor(symbol,firstSearch) {
-        this.firstSearch = firstSearch
-        this.plotStockGraph(symbol)
+    constructor(symbol,graphTheYear) {
+        this.graphTheYear = graphTheYear
+        // this.plotStockGraph(symbol)  // if handle options click called plot instead of fetchAnd
         this.stockData = null
+        this.firstSearch = true
+        this.symbol = symbol
     }
 // Fetch data from Alpha Vantage API for the past year
 fetchStockData = async (symbol) => {
@@ -16,8 +18,7 @@ fetchStockData = async (symbol) => {
     // Extract data for the past year
     const timeSeriesData = data['Weekly Time Series'];
     this.stockData = timeSeriesData
-
-    this.parseGraphData(this.stockData)
+    return this.parseGraphData(this.stockData)
     // timestamps = timestamps.map(date => {
     //     return date.split("-")
     // })
@@ -30,16 +31,22 @@ fetchStockData = async (symbol) => {
 };
 
 parseGraphData = (timeSeriesData) => {
-    let timestamps = Object.keys(timeSeriesData).slice(0, 52).reverse(); // Get the first 12 timestamps (past year)
+    let x = this.graphTheYear === true ? 52 : 4
+
+    let timestamps = Object.keys(timeSeriesData).slice(0, x).reverse(); // Get the first 52 or 4timestamps (past year : past month)
     const stockPrices = timestamps.map((timestamp) => parseFloat(timeSeriesData[timestamp]['4. close']));
-    return {timestamps,stockPrices};
+    this.plotStockGraph(this.symbol,timestamps,stockPrices)
+    // return this.firstSearch ? this.plotStockGraph(this.symbol) : {timestamps,stockPrices};
+    // return {timestamps,stockPrices};
+    
 }
 
 // Plot stock data on a graph
-plotStockGraph = async (symbol) => {
-//   const stockData = await this.fetchStockData(symbol);
+plotStockGraph = async (symbol,timestamps,stockPrices) => {
+//   const stockData = await this.fetchStockData(this.symbol);
 //   if (stockData) {
-   
+   console.log(timestamps)
+   console.log(3)
     const canvas = document.getElementById('stock-chart')
     const ctx = canvas.getContext('2d');
 
@@ -52,11 +59,11 @@ plotStockGraph = async (symbol) => {
     const chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: stockData.timestamps,
+        labels: timestamps,
         datasets: [
           {
-            label: `${symbol} Stock Price`,
-            data: stockData.stockPrices,
+            label: `${symbol} Stock Price - ${this.graphTheYear ? "52" : "4"} Weeks`,
+            data: stockPrices,
             borderColor: 'black',
             backgroundColor: 'white',
           },
@@ -86,15 +93,19 @@ plotStockGraph = async (symbol) => {
 //   }
 };
 
-fetchAndPlotStockGraph = async (symbol) => {
+fetchAndPlotStockGraph = async (symbol = "aapl") => {
     if (!this.stockData) {
       // Fetch stock data if not already fetched
-      this.stockData = await this.fetchStockData(symbol);
+      await this.fetchStockData(symbol);
+      console.log(4)
+      console.log(5)
+      this.firstSearch = false
     }
 
     // Plot stock graph using the fetched data
-    if (this.stockData) {
-      this.plotStockGraph();
+    else {
+        console.log(6)
+      this.parseGraphData(this.stockData);
     }
   };
 

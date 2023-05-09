@@ -12,7 +12,11 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <header>
+
+    </header>
+    
+    <div class="search-wrapper">
         <div class="stock-search-bar">
             <input id="stock-input" type="text" placeholder="Enter a symbol">
             <div class="stock-options">
@@ -22,7 +26,7 @@
     </div>
     
     <div class="graph-container">
-        <button value="true">4-Week</button>
+        <button id="timeFrameButton" value="true">4-Week</button>
         <div id="graph" style="display: none">
             <canvas id="stock-chart"></canvas>
         </div>
