@@ -19,12 +19,14 @@ timeframe
 - wednesday - clean up
 
 FIXES
-    - change dates
     - toggle switch 
     - beta calculator
         -find suitable api
-        
+
     - news api
 
+    -google like search bar
 
 nasdaq api key : 5bRxHLcdnPmabEjaUnpb
+news api key : dd06570001074608a346aeabfe1c9413
+fmp api key : 17c1f2e0031b2111022dbd33ff683fc1

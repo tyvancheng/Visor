@@ -76,13 +76,13 @@ export default class SearchBar {
             
             const eventTicker = event.target.innerText.split(", ")[0]
             const graphContainer = document.getElementById("graph")
-            const timeFrameButton = document.getElementById("timeFrameButton")
+            // const timeFrameButtons = document.querySelectorAll(".timeFrameButton")
 
             let graph = new MonthlyData(eventTicker,true);
             graph.fetchAndPlotStockGraph(eventTicker);
             graphContainer.style.display = 'block'
-            timeFrameButton.style.display = 'block'
-
+            // timeFrameButtons.forEach(button => button.style.display = 'block')
+            
             
             this.searchInput.value = "";
             while (this.stockList.firstChild) {
@@ -94,10 +94,18 @@ export default class SearchBar {
     }
 
     handleTimeFrameClick = (graph) => {
-        const button = document.getElementById("timeFrameButton")
-        button.addEventListener('click', () => {
-            graph.graphTheYear = !graph.graphTheYear
-            graph.fetchAndPlotStockGraph()
+        const timeFrameButtons = document.querySelectorAll(".timeFrameButton")
+        timeFrameButtons.forEach(button => {
+            button.style.display = 'block'
+            
+            button.addEventListener('click', () => {
+                if (graph.graphTheYear !== button.value) {
+                    graph.graphTheYear = button.value
+                    graph.fetchAndPlotStockGraph()
+                }
+            })
         })
+        // if graph is on dont let it click again
+    
     }
 };
