@@ -19,11 +19,13 @@ body {
     max-width: 450px;
     margin: 150px auto;
     border: none;
+    z-index: 2;
 }
 
 .stock-search-bar {
     position: relative;
-    background-color: white;
+    background-color: rgba(255,255,255,.1);
+
     width: 100%;
     border-radius: 20px;
     z-index: 1;
@@ -31,20 +33,24 @@ body {
 }
 
 .stock-options {
+    margin-top: 10px;
+    /* padding: ; */
     border-radius: 20px;
     border: none;
 }
 #stock-list {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
-    border-radius: 5px;
-    background-color: #f5f5f5;
+    padding: auto;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,.4);
   }
   
   #stock-list li {
-    padding: 10px;
-    border: 1px solid rgb(204, 203, 203);
+    padding: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    /* border: 1px solid rgb(113, 43, 43); */
   }
   
   #stock-list li:hover {
@@ -60,6 +66,7 @@ body {
     position: relative;
     transition: border-color 0.3s, box-shadow 0.3s;
     border: none;
+    background-color: rgba(255,255,255,.5);
   }
   
   #stock-input::after {
@@ -69,7 +76,7 @@ body {
     left: 20px;
     width: calc(100% - 40px);
     height: 1px;
-    background-color: #888888;
+    background-color: #441e1e;
     transform: scaleX(0);
     transition: transform 0.3s;
   }
@@ -84,11 +91,15 @@ body {
   
       
 .graph-container {
+    display: static;
     width: 50%;
-    margin: auto;
-    z-index: 3;
+    margin-top: -20px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
     display: flex;
     flex-direction: column;
+    position: static;
 }
 .button-container {
   display: flex;
@@ -96,11 +107,26 @@ body {
 }
 #graph {
     background-color: white;
+    border-radius: 0 0 10px 10px;
 }
 
 .timeFrameButton {
     display: none;
     height: 50px;
     width: 150px;
+    background-color: rgb(249, 166, 166);
+    border: none;
+    border-radius: 10px 35px 0 0;
+    color: white;
+    font-weight: 800;
+}
 
+.timeFrameButton.active {
+  background-color: rgb(118, 117, 117);
+}
+
+.timeFrameButton:not(.active):hover {
+  background-color: #9a9999;
+  transform: scale(1.05);
+  cursor: pointer;
 }

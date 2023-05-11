@@ -29,6 +29,7 @@ fetchStockData = async (symbol) => {
 
 parseGraphData = (timeSeriesData) => {
     let x = 365
+    console.log(this.timeFrame)
     switch (this.timeFrame) {
         case "1-Week":
             x = 5;
@@ -88,7 +89,7 @@ plotStockGraph = async (symbol,timestamps,stockPrices) => {
         labels: timestamps,
         datasets: [
           {
-            label: `${symbol} Stock Price - ${this.timeFrame === 365 ? "1-Year" : this.timeFrame}`,
+            label: `${symbol} Stock Price - ${this.timeFrame}`,
             data: stockPrices,
             borderColor: 'black',
             backgroundColor: 'white',
@@ -123,7 +124,7 @@ fetchAndPlotStockGraph = async (symbol = "aapl") => {
     if (!this.stockData) {
       // Fetch stock data if not already fetched
       await this.fetchStockData(symbol);
-      this.firstSearch = false
+      // this.firstSearch = false
     }
 
     // Plot stock graph using the fetched data

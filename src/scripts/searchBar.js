@@ -67,18 +67,27 @@ export default class SearchBar {
                 while (this.stockList.firstChild) {
                     this.stockList.removeChild(this.stockList.firstChild);
                 }
+                this.stockList.style.display = 'none'
             }
         });
     }
     
     handleStockOptionsClick = () => {
         this.stockList.addEventListener('click', (event) => {
-            
+            const button = document.getElementById("1-Year-button")
+            const timeFrameButtons = document.querySelectorAll(".timeFrameButton")
             const eventTicker = event.target.innerText.split(", ")[0]
             const graphContainer = document.getElementById("graph")
             // const timeFrameButtons = document.querySelectorAll(".timeFrameButton")
+            timeFrameButtons.forEach(btn => {
+                if (btn !== button) {
+                    btn.classList.remove('active');
+                } else {
+                    button.classList.add('active')
+                }
+            })
 
-            let graph = new MonthlyData(eventTicker,true);
+            let graph = new MonthlyData(eventTicker,"1-Year");
             graph.fetchAndPlotStockGraph(eventTicker);
             graphContainer.style.display = 'block'
             // timeFrameButtons.forEach(button => button.style.display = 'block')
@@ -103,9 +112,16 @@ export default class SearchBar {
                     graph.graphTheYear = button.value
                     graph.fetchAndPlotStockGraph()
                 }
+                button.classList.add('active');
+                // Set other buttons to red
+                timeFrameButtons.forEach(btn => {
+                if (btn !== button) {
+                    btn.classList.remove('active');
+                }
             })
         })
         // if graph is on dont let it click again
     
-    }
+    })
 };
+}
