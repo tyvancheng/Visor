@@ -1,25 +1,150 @@
-/* .header {
-    height: 100px;
-    width: auto;
-    background-color: rgb(249, 193, 119);
-    z-index: 2;
-} */
+
 body {
     /* background-color: rgb(255, 229, 180); */
-    margin: 0;
-    padding: 0;
+    /* /* margin: 0; */
+    /* padding: 0; */
     background-color: rgb(255, 229, 180);
-    background-size: 50% auto;
+    /* background-size: 50% auto; */
     /* z-index: 1; */
 
     /* height: 100%; */
  
+}
+
+.curtain {
+  z-index: 7;
+}
+
+.left-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(248, 203, 121);
+  animation: leftSlide 2s ease-in-out forwards paused;
+  z-index: 7;
+  /* animation-play-state: running; */
+}
+
+.right-side {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(248, 203, 121);
+  animation: rightSlide 2s ease-in-out forwards paused;
+  z-index: 7;
+  /* animation-play-state: running; */
+}
+
+@keyframes leftSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes rightSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: -50px;
+  margin-left: 70px;
+  height: 100vh;
+  padding: 0%;
+  z-index: 10;
+  animation: containerSlide 2s ease-in-out forwards paused;
+  /* animation-play-state: paused; */
+}
+
+@keyframes containerSlide {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+.container img {
+  display: flex;
+  height: 400px;
+  margin-top: 200px;
+  margin-left: 100px;
+  padding: 25px;
+}
+.container p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+}
+
+.box {
+  position: relative;
+  text-align: center;
+  /* border: 1px red solid; */
+  padding: 30px;
+  background-color: #fff;
+  background-color: rgb(253, 239, 214);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  max-width: 400px;
+  width: 100%;
+}
+
+p {
+  font-size: 18px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 15px;
+  color: rgb(12, 13, 14);
+
+}
+.start-button {
+  position: absolute; /* position relative to .box */
+  bottom: 0; 
+  right: 0; 
+  padding: 10px;
+}
+
+button {
+  background-color: rgb(251, 187, 68);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(62, 64, 70);
+  cursor: pointer;
+}
+.logo-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.logo {
+  width: 100px;
+  height: 150px;
+}
+
+.company-name {
+  margin-left: 10px; /* Adjust the margin as needed */
+  font-size: 50px; /* Adjust the font size as needed */
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  color: grey;
 }
 .search-wrapper {
     max-width: 450px;
     margin: 150px auto;
     border: none;
     z-index: 2;
+    margin-top: -600px;
 }
 
 .stock-search-bar {

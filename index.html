@@ -7,14 +7,38 @@
     <link rel="stylesheet" href="./src/main.css" />
     <script src="./dist/main.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.js"></script>
-    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Visor</title>
   </head>
 
   <body>
-   <div class="header">
+    <div class="curtain">
+        <div class="left-side"></div>
+        <div class="right-side"></div>
+    </div>
 
-   </div>
+    <div class="container">
+        <img src="memeGuy.png" alt="My Image">
+        <div class="box">
+            <p>
+                Welcome to, VISOR. Visualize your favorite stocks from a fun perspective.
+                Customize your data from a variety of options.
+                Get started with VISOR.
+            </p>
+            <div class="start-button">
+                <button id="start" type="submit">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+
+    <header>
+        <div class="logo-container">
+          <img src="memeGuy.PNG" alt="Logo" class="logo">
+          <h1 class="company-name">VISOR</h1>
+        </div>
+    </header>
+
     <div class="search-wrapper">
         <div class="stock-search-bar">
             <input id="stock-input" type="text" placeholder="Enter a symbol">

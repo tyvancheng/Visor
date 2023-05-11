@@ -10,7 +10,7 @@ export default class MonthlyData {
 // Fetch data from Alpha Vantage API for the past year
 fetchStockData = async (symbol) => {
 
-  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&apikey=EMX9C3VLWA4KWGK1`;
+  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&outputsize=full&apikey=EMX9C3VLWA4KWGK1`;
 
   try {
     const response = await fetch(url);
@@ -31,23 +31,37 @@ parseGraphData = (timeSeriesData) => {
     let x = 365
     switch (this.graphTheYear) {
         case "1-Week":
-            x = 7;
+            x = 5;
             break;
         case "4-Week":
-            x = 30;
+            x = 22;
             break;
         case "3-Month":
-            x = 90;
+            x = 62;
             break;
         case "6-Month":
-            x = 180;
+            x = 126;
             break;
         case "1-Year":
-            x = 365;
+            x = 252;
             break;
-     
+        case "5-Years":
+            x = 1260;
+            break;
     }
     let timestamps = Object.keys(timeSeriesData).slice(0, x).reverse(); // Get the first 52 or 4timestamps (past year : past month)
+    
+    while (timestamps.length > 99) {
+      const deletionCount = timestamps.length - 99;
+      // console.log(deletionCount)
+      const step = Math.ceil(timestamps.length / 99);
+      // console.log(step)
+      let index = 0;
+          for (let deleted = 0; deleted < deletionCount; deleted++) {
+              if (index < timestamps.length - 10) timestamps.splice(index, 1); // Delete one element at the current index
+              index += step; // Increment the index by the step size
+          }
+  }
     const stockPrices = timestamps.map((timestamp) => parseFloat(timeSeriesData[timestamp]['4. close']));
     this.plotStockGraph(this.symbol,timestamps,stockPrices)
     // return this.firstSearch ? this.plotStockGraph(this.symbol) : {timestamps,stockPrices};
@@ -72,7 +86,7 @@ plotStockGraph = async (symbol,timestamps,stockPrices) => {
         labels: timestamps,
         datasets: [
           {
-            label: `${symbol} Stock Price - ${this.graphTheYear ? "52" : "4"} Weeks`,
+            label: `${symbol} Stock Price - ${this.graphTheYear}`,
             data: stockPrices,
             borderColor: 'black',
             backgroundColor: 'white',

@@ -106,13 +106,13 @@ export default class SearchBar {
         const timeFrameButtons = document.querySelectorAll(".timeFrameButton")
         timeFrameButtons.forEach(button => {
             button.style.display = 'block'
-            
             button.addEventListener('click', () => {
                 if (graph.graphTheYear !== button.value) {
                     graph.graphTheYear = button.value
                     graph.fetchAndPlotStockGraph()
                 }
                 button.classList.add('active');
+                graph.graphTheYear = button.value
                 // Set other buttons to red
                 timeFrameButtons.forEach(btn => {
                 if (btn !== button) {
