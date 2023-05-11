@@ -1,14 +1,14 @@
-.header {
+/* .header {
     height: 100px;
     width: auto;
     background-color: rgb(249, 193, 119);
     z-index: 2;
-}
+} */
 body {
     /* background-color: rgb(255, 229, 180); */
     margin: 0;
     padding: 0;
-    background-color: #644bff;
+    background-color: rgb(255, 229, 180);
     background-size: 50% auto;
     /* z-index: 1; */
 
@@ -18,6 +18,7 @@ body {
 .search-wrapper {
     max-width: 450px;
     margin: 150px auto;
+    border: none;
 }
 
 .stock-search-bar {
@@ -26,10 +27,12 @@ body {
     width: 100%;
     border-radius: 20px;
     z-index: 1;
+    border: none;
 }
 
 .stock-options {
     border-radius: 20px;
+    border: none;
 }
 #stock-list {
     list-style-type: none;
@@ -56,6 +59,7 @@ body {
     font-size: 18px;
     position: relative;
     transition: border-color 0.3s, box-shadow 0.3s;
+    border: none;
   }
   
   #stock-input::after {
@@ -79,18 +83,24 @@ body {
   }
   
       
-
-
 .graph-container {
     width: 50%;
-    margin-left: auto;
+    margin: auto;
     z-index: 3;
+    display: flex;
+    flex-direction: column;
 }
-
+.button-container {
+  display: flex;
+  justify-content:space-between;
+}
 #graph {
     background-color: white;
 }
 
 .timeFrameButton {
     display: none;
+    height: 50px;
+    width: 150px;
+
 }
