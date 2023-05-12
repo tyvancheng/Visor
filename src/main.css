@@ -137,7 +137,8 @@ button {
   margin-left: 10px; /* Adjust the margin as needed */
   font-size: 50px; /* Adjust the font size as needed */
   font-family:Verdana, Geneva, Tahoma, sans-serif;
-  color: grey;
+  color: rgb(142, 141, 141);
+  /* color: rgb(248, 93, 93); */
 }
 .search-wrapper {
     max-width: 450px;
