@@ -1,4 +1,6 @@
 import "./fetch"
+import { stockDataHolder } from "../data/dataHolder"
+
 export default class StockData {
     constructor(symbol,timeFrame) {
         this.timeFrame = timeFrame
@@ -18,7 +20,7 @@ fetchStockData = async (symbol) => {
     // Extract data for the past year
     const timeSeriesData = data['Time Series (Daily)']; // Keys into the nested object
     this.stockData = timeSeriesData
-    // console.log(timeSeriesData)
+    
     return this.parseGraphData(this.stockData)
 
   } catch (error) {

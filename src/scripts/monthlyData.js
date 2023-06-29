@@ -1,4 +1,6 @@
 
+import { stockDataHolder } from "../data/dataHolder"
+
 export default class MonthlyData {
     constructor(symbol,graphTheYear) {
         this.graphTheYear = graphTheYear
@@ -18,7 +20,8 @@ fetchStockData = async (symbol) => {
     // Extract data for the past year
     const timeSeriesData = data['Time Series (Daily)']; // Keys into the nested object
     this.stockData = timeSeriesData
-    // console.log(timeSeriesData)
+    
+    stockDataHolder[symbol] = timeSeriesData
     return this.parseGraphData(this.stockData)
 
   } catch (error) {

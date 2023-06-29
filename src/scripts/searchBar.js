@@ -11,16 +11,16 @@ export default class SearchBar {
 
     fetchStocks = searchText => {
         return new Promise((resolve, reject) => {
-          fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchText}&apikey=EMX9C3VLWA4KWGK1`)
+        //   fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchText}&apikey=EMX9C3VLWA4KWGK1`)
+        fetch(`https://ticker-2e1ica8b9.now.sh/keyword/${searchText}`)
             .then(res => res.json())
             .then(data => {
-              const bestMatches = data.bestMatches || [];
+                
+              const bestMatches = data || [];
               const usSymbols = bestMatches
-                .filter(match => match['4. region'] === 'United States')
-                // .map(match => match['1. symbol']);
-                    // name: match['2. name']
-                .map(match => `${match['1. symbol']}, ${match['2. name']}`)
-                // fix this ^^ see what it console.logs
+                // .filter(match => match['4. region'] === 'United States')
+                .map(match => `${match['symbol']}, ${match['name']}`)
+                
               resolve(usSymbols);
             })
             .catch(error => {
@@ -40,12 +40,14 @@ export default class SearchBar {
             }
 
             if (Array.isArray(stocks)) {
+                
                 stocks.forEach(stock => {
                     const li = document.createElement('li');
                     li.innerText = stock;
                     li.setAttribute('value', stock.split(", ")[0])
                     this.stockList.appendChild(li);
                 });
+                
             } else {
                 // Handle the case when the response is not an array
                 console.log('Invalid API response:',stocks);
@@ -61,6 +63,7 @@ export default class SearchBar {
             const searchText = this.searchInput.value.trim();
             
             if (searchText.length > 0) {
+                this.stockList.style.display = ''
                 this.showStocks(searchText);
             } else {
                 // Clear search results if search input is empty
@@ -68,6 +71,7 @@ export default class SearchBar {
                     this.stockList.removeChild(this.stockList.firstChild);
                 }
                 this.stockList.style.display = 'none'
+                
             }
         });
     }
@@ -80,7 +84,7 @@ export default class SearchBar {
             const graphContainer = document.getElementById("graph")
             // const timeFrameButtons = document.querySelectorAll(".timeFrameButton")
             timeFrameButtons.forEach(btn => {
-                if (btn !== button) {
+                if (btn !== button) { // if 1 year tab isnt clicked, click it
                     btn.classList.remove('active');
                 } else {
                     button.classList.add('active')
@@ -112,7 +116,7 @@ export default class SearchBar {
                     graph.fetchAndPlotStockGraph()
                 }
                 button.classList.add('active');
-                graph.graphTheYear = button.value
+                graph.graphTheYear = button.value 
                 // Set other buttons to red
                 timeFrameButtons.forEach(btn => {
                 if (btn !== button) {
