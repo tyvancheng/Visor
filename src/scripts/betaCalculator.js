@@ -6,7 +6,7 @@ const benchmarkReturns = [/* benchmark returns array */];
 export const calculateBeta = (stockReturns, benchmarkReturns) => {
     debugger
     const returnOrganizer = (returns) => {
-        return Object.values(returns).map(day => parseInt(Object.values(day)[3])
+        return Object.values(returns).map(day => parseInt(Object.values(day)[3]))
     }
    
     stockReturns = returnOrganizer(stockReturns)
@@ -49,5 +49,6 @@ debugger
     const beta = covariance / benchmarkVariance;
     debugger
     return `Beta: ${beta}`;
+ 
 };
 

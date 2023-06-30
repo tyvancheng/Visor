@@ -101,13 +101,13 @@ export default class SearchBar {
 
             await this.etf.fetchAndPlotStockGraph("spy");
 
-            // graphContainer.style.display = 'block'
+            graphContainer.style.display = 'block'
             // graphButtons.style.display = 'flex'
             // leftSide.style.display = 'block'
             debugger
-            const beta = calculateBeta(graph.stockData, this.etf.stockData)
+            // const beta = calculateBeta(graph.stockData, this.etf.stockData)
             debugger
-            mainBody.style.display = 'flex'
+            // mainBody.style.display = 'flex'
 
 
 
