@@ -1,11 +1,11 @@
-[VISOR](https://tyvancheng.github.io/Visor/)
 
-VISOR is a web application that provides an autocomplete search bar for searching ticker symbols. It allows users to quickly search for specific stocks and provides a graphical representation of the stock's performance over various timeframes.
+[VISOR](https://tyvancheng.github.io/Visor/) is a web application that provides an autocomplete search bar for searching ticker symbols. It allows users to quickly search for specific stocks and provides a graphical representation of the stock's performance over various timeframes.
 
 Features
 
 Autocomplete Search Bar: The search bar provides an autocomplete feature, making it easy for users to find the desired ticker symbol quickly. It suggests matching stock symbols as the user types, enhancing the search experience.
 Graphical Representation: Once a stock is selected, VISOR displays a graph illustrating the stock's performance. Users can choose from six different timeframes to view the historical data of the stock. The graph provides insights into the stock's price trends and helps users make informed decisions.
+
 Future Plans
 
 VISOR has exciting plans for future enhancements and additional functionality:
