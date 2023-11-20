@@ -13,7 +13,7 @@ export default class MonthlyData {
   // Fetch data from Alpha Vantage API for the past year
   fetchStockData = async (symbol) => {
 
-    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&outputsize=full&apikey=EMX9C3VLWA4KWGK1`;
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=EMX9C3VLWA4KWGK1`;
 
     try {
       const response = await fetch(url);
