@@ -98,7 +98,8 @@ export default class SearchBar {
 
             let graph = new MonthlyData(eventTicker, "1-Year");
             await graph.fetchAndPlotStockGraph(eventTicker);
-
+            console.log("hi");
+            debugger
             await this.etf.fetchAndPlotStockGraph("spy");
 
             graphContainer.style.display = 'block'
