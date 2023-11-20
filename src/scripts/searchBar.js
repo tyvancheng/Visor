@@ -96,7 +96,7 @@ export default class SearchBar {
                 }
             })
 
-            let graph = new MonthlyData(eventTicker, "1-Year");
+            let graph = new Monthlygit (eventTicker, "1-Year");
             await graph.fetchAndPlotStockGraph(eventTicker);
             console.log("hi");
             debugger
