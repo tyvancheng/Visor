@@ -17,15 +17,15 @@ export default class MonthlyData {
 
     try {
       const response = await fetch(url);
-      debugger
       const data = await response.json();
-      // Extract data for the past year
-      debugger
-      const timeSeriesData = data['Time Series (Daily)']; // Keys into the nested object
-      debugger
-      this.stockData = timeSeriesData
 
+      // Extract data for the past year
+      const timeSeriesData = data['Time Series (Daily)']; // Keys into the nested object
+      
+      this.stockData = timeSeriesData
+      // Add stock data to dict for future use
       stockDataHolder[symbol] = timeSeriesData
+
       return this.parseGraphData(this.stockData)
 
     } catch (error) {
@@ -130,7 +130,7 @@ export default class MonthlyData {
 
   fetchAndPlotStockGraph = async (symbol = "aapl") => {
     if (!this.stockData) {
-      debugger
+      
       // Fetch stock data if not already fetched
       await this.fetchStockData(symbol);
       this.firstSearch = false
@@ -138,7 +138,7 @@ export default class MonthlyData {
 
     // Plot stock graph using the fetched data
     else {
-      debugger
+      
       this.parseGraphData(this.stockData);
     }
   };
